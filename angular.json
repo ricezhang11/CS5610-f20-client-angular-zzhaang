@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "cs5610-f20-client-angular-aprilzhang"
+  "defaultProject": "cs5610-f20-client-angular-aprilzhang",
+  "cli": {
+    "analytics": "b87490ef-970a-4159-8578-9412117b786a"
+  }
 }
