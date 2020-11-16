@@ -3,20 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CourseNavigatorComponent } from './CourseViewerComponent/course-navigator.component';
-import { CourseListComponent } from './CourseTableComponent/course-list.component';
-import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
-import { ModuleListComponent } from './module-list/module-list.component';
-import { TopicPillsComponent } from './topic-pills/topic-pills.component';
+import { CourseTableComponent } from './components/course-table/course-table.component';
+import { CourseViewerComponent } from './components/course-viewer/course-viewer.component';
+import { ModuleListComponent } from './components/module-list/module-list.component';
+import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseNavigatorComponent,
-    CourseListComponent,
     LessonTabsComponent,
     ModuleListComponent,
-    TopicPillsComponent
+    CourseTableComponent,
+    CourseViewerComponent
   ],
   imports: [
     BrowserModule,
