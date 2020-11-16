@@ -9,9 +9,6 @@ import { CourseService } from '../../../services/CourseService';
 
 export class CourseTableComponent implements OnInit {
   courses = [];
-  selectedCourse = {
-    title: ''
-  };
 
   constructor(private courseService: CourseService) { }
 

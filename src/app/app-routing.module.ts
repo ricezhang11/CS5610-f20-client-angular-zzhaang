@@ -5,9 +5,10 @@ import {CourseViewerComponent} from './components/course-viewer/course-viewer.co
 
 const routes: Routes = [
   {path: '', component: CourseTableComponent},
-  {path: 'table/courses'},
+  {path: 'table/courses', component: CourseTableComponent},
   {path: ':layout/courses/:cid/modules', component: CourseViewerComponent},
-  {path: ':layout/courses/:cid/modules/:mid/lessons', component: CourseViewerComponent}
+  {path: ':layout/courses/:cid/modules/:mid/lessons', component: CourseViewerComponent},
+  {path: ':layout/courses/:cid/modules/:mid/lessons/:lid/topics', component: CourseViewerComponent}
 ];
 
 @NgModule({

@@ -7,6 +7,10 @@ import { CourseTableComponent } from './components/course-table/course-table.com
 import { CourseViewerComponent } from './components/course-viewer/course-viewer.component';
 import { ModuleListComponent } from './components/module-list/module-list.component';
 import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.component';
+import { CourseService } from '../services/CourseService';
+import { ModuleService } from '../services/ModuleService';
+import { LessonService } from '../services/LessonService';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,9 +22,10 @@ import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [CourseService, ModuleService, LessonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
