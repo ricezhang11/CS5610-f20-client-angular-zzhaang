@@ -1,7 +1,7 @@
 <ul class="list-group">
   <li *ngFor="let module of modules"
       class="list-group-item">
-    <a routerLink="table/courses/{{module._id}}/modules">
+    <a routerLink="table/courses/{{courseId}}/modules/{{module._id}}/lessons">
       {{module.title}}
     </a>
   </li>
