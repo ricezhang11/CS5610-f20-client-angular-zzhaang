@@ -20,7 +20,7 @@ export class CourseViewerComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       const courseId = params.cid;
-      if (typeof courseId !== 'undefined') {
+      if (courseId !== this.course._id && typeof courseId !== 'undefined') {
         this.courseService.findCourseById(courseId)
           .then(course => this.course = course);
       }

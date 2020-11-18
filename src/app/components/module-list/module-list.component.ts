@@ -19,12 +19,14 @@ export class ModuleListComponent implements OnInit {
     this.activeRoute.params.subscribe(params => {
       const cid = params.cid;
       this.moduleId = params.mid;
-      if (cid !== this.courseId && typeof this.courseId !== 'undefined') {
+      // console.log(this.courseId);
+      // console.log(cid);
+      if (cid !== this.courseId && typeof cid !== 'undefined') {
         this.courseId = cid;
+        // console.log('after fix' + this.courseId);
         this.moduleService.findModulesForCourse(this.courseId)
           .then(modules => this.modules = modules);
       }
     });
   }
-
 }
