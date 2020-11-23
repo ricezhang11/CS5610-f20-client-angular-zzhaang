@@ -1,0 +1,14 @@
+<h1>{{question.question}}</h1>
+<ul class="list-group">
+    <li *ngFor="let choice of question.choices"
+        [ngClass]="checkAnswer(choice)"
+      (click)="selected=choice">
+      <input id="{{choice}}" type="radio" name="multiple-choice">
+      <label for="{{choice}}">{{choice}}</label>
+      <i class="fa fa-check pull-right green-check" *ngIf="grading && choice===question.correct"></i>
+      <i class="fa fa-times pull-right red-cross" *ngIf="grading && choice===selected && choice!==question.correct"></i>
+    </li>
+</ul>
+<br/>
+<h6>Your answer: {{selected}}</h6>
+<button class="btn btn-success" (click)="grade()">Grade</button>

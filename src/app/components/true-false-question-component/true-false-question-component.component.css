@@ -1,0 +1,15 @@
+.background-green{
+  background-color: palegreen;
+}
+
+.background-red{
+  background-color: pink;
+}
+
+.green-check{
+  color: darkgreen;
+}
+
+.red-cross{
+  color: darkred;
+}

@@ -17,9 +17,11 @@ export class LessonTabsComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       this.courseId = params.cid;
-      const mid = params.mid;
       this.lessonId = params.lid;
+      const mid = params.mid;
+      // debugger
       if (mid !== this.moduleId && typeof mid !== 'undefined'){
+        // debugger
         this.moduleId = mid;
         this.lessonService.findLessonsForModule(this.moduleId)
           .then(lessons => this.lessons = lessons);
