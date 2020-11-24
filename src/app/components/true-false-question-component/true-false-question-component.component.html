@@ -3,8 +3,8 @@
   <li *ngFor="let choice of choices"
       [ngClass]="checkAnswer(choice)"
       (click)="selected=choice">
-    <input id="{{choice}}" type="radio" name="true-false">
-    <label for="{{choice}}">{{choice}}</label>
+    <input id="{{choice + question.question}}" type="radio" name="{{question.question}}">
+    <label for="{{choice + question.question}}">{{choice}}</label>
     <i class="fa fa-check pull-right green-check" *ngIf="grading && choice.toLowerCase()===question.correct"></i>
     <i class="fa fa-times pull-right red-cross" *ngIf="grading && choice===selected && choice.toLowerCase()!==question.correct"></i>
   </li>
