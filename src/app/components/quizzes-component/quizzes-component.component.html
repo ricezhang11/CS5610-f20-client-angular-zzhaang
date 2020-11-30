@@ -1,9 +1,24 @@
 <h2>Quizzes</h2>
+<br/>
 <ul class="list-group">
   <li *ngFor="let quiz of quizzes" class="list-group-item">
     <a routerLink="/table/courses/{{courseId}}/quizzes/{{quiz['_id']}}">
-      {{quiz['title']}} </a>
+      {{quiz['title']}}</a>
     <a class="btn btn-primary float-right" routerLink="/table/courses/{{courseId}}/quizzes/{{quiz['_id']}}">
       Start </a>
+    <br/>
+    <ul>
+      <span *ngFor="let at of attempts[quiz['_id']]; index as i" >
+        <li>
+          <a *ngIf="i !== attempts[quiz['_id']].length - 1" routerLink="/attempts/{{at['_id']}}">
+            Attempt {{i+1}}:
+          </a>
+          <a *ngIf="i === attempts[quiz['_id']].length - 1" routerLink="/attempts/{{at['_id']}}">
+            Your last attempt:
+          </a>
+          <span>Your score: {{at['score']}}</span>
+        </li>
+      </span>
+    </ul>
   </li>
 </ul>

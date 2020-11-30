@@ -1,8 +1,23 @@
 <ul class="list-group">
   <li *ngFor="let question of questions" class="list-group-item">
   <div [ngSwitch]="question['type']">
-    <app-multiple-choice-question-component [question]="question" *ngSwitchCase="'MULTIPLE_CHOICE'"></app-multiple-choice-question-component>
-    <app-true-false-question-component [question]="question" *ngSwitchCase="'TRUE_FALSE'"></app-true-false-question-component>
+    <app-multiple-choice-question-component
+      [question]="question" [isAttempt]=false [graded]=graded
+      *ngSwitchCase="'MULTIPLE_CHOICE'"
+      [(answer)]= "question.answer"></app-multiple-choice-question-component>
+    <app-true-false-question-component
+      [question]="question" [isAttempt]=false [graded]=graded
+      [(answer)]= "question.answer"
+      *ngSwitchCase="'TRUE_FALSE'"></app-true-false-question-component>
   </div>
   </li>
 </ul>
+<br/>
+<h6 *ngIf="graded">Your quiz has been graded. Click Go Back to see your score</h6>
+<button (click)="submitQuiz()" class="btn btn-success">
+  Submit Quiz
+</button>
+<button *ngIf="graded" class="btn btn-warning">
+  <a routerLink="/table/courses/{{courseId}}/quizzes">Go Back</a>
+</button>
+

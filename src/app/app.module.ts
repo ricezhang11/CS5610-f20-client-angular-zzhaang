@@ -18,6 +18,8 @@ import { QuizComponent } from './components/quiz-component/quiz-component.compon
 import { TrueFalseQuestionComponent } from './components/true-false-question-component/true-false-question-component.component';
 import { MultipleChoiceQuestionComponent } from './components/multiple-choice-question-component/multiple-choice-question-component.component';
 import {CommonModule} from '@angular/common';
+import { AttemptsComponent } from './components/attempts-component/attempts-component.component';
+import { AttemptServiceClient } from '../services/attempt.service.client';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {CommonModule} from '@angular/common';
     QuizzesComponent,
     QuizComponent,
     TrueFalseQuestionComponent,
-    MultipleChoiceQuestionComponent
+    MultipleChoiceQuestionComponent,
+    AttemptsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import {CommonModule} from '@angular/common';
     FormsModule,
     CommonModule
   ],
-  providers: [CourseService, ModuleService, LessonService, QuizzesServiceClient, QuestionsServiceClient],
+  providers: [CourseService, ModuleService, LessonService, QuizzesServiceClient, QuestionsServiceClient, AttemptServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

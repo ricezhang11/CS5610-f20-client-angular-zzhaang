@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li *ngFor="let question of attempt['answers']" class="list-group-item">
+    <div [ngSwitch]="question['type']">
+      <app-multiple-choice-question-component [question]="question" [isAttempt] = true [graded]=true *ngSwitchCase="'MULTIPLE_CHOICE'"></app-multiple-choice-question-component>
+      <app-true-false-question-component [question]="question" [isAttempt]=true [graded]=true *ngSwitchCase="'TRUE_FALSE'"></app-true-false-question-component>
+    </div>
+  </li>
+</ul>

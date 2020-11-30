@@ -1,39 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-true-false-question-component',
   templateUrl: './true-false-question-component.component.html',
-  styleUrls: ['./true-false-question-component.component.css']
+  styleUrls: ['./true-false-question-component.component.css'],
+  // template: '<h1>hello world</h1>'
 })
 
 export class TrueFalseQuestionComponent implements OnInit {
+  choices = ['true', 'false'];
   @Input()
-  question = {_id: '', title: '', question: '', correct: '', type: '', quizId: ''};
-  grading = false;
-  choices = ['TRUE', 'FALSE'];
-  selected = '';
-  grade = () => {
-    this.grading = true;
-  }
-  checkAnswer = (choice: string) => {
-    if (!this.grading){
-      if (this.selected === choice) {
-        return 'list-group-item background-green';
-      } else{
-        return 'list-group-item';
-      }
-    } else{
-      if (choice.toLowerCase() === this.question.correct){
-        return 'list-group-item background-green';
-      } else if (choice === this.selected && choice.toLowerCase() !== this.question.correct) {
-        return 'list-group-item background-red';
-      } else{
-        return 'list-group-item';
-      }
-    }
+  question = {_id: '', title: '', question: '', correct: '', type: '', answer: ' '};
+  @Input()
+  answer = '';
+  @Input()
+  isAttempt = undefined;
+  @Input()
+  graded = false;
+  @Output()
+  answerChange = new EventEmitter<string>();
+  submitAnswer = (choice: string) => {
+    this.answer = choice;
+    this.answerChange.emit(this.answer);
   }
   constructor() { }
   ngOnInit(): void {
   }
 
+  checkFormat = (choice: string) => {
+    if (this.isAttempt && choice === this.question.correct) {
+      return 'list-group-item background-green';
+    } else if (this.isAttempt && choice === this.question.answer && this.question.answer !== this.question.correct) {
+      return 'list-group-item background-red';
+    } else {
+      return 'list-group-item';
+    }
+  }
 }

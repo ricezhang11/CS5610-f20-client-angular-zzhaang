@@ -1,14 +1,11 @@
 <h1>{{question.question}}</h1>
 <ul class="list-group">
   <li *ngFor="let choice of choices"
-      [ngClass]="checkAnswer(choice)"
-      (click)="selected=choice">
-    <input id="{{choice + question.question}}" type="radio" name="{{question.question}}">
+      (click)="submitAnswer(choice)" [ngClass]=checkFormat(choice)>
+    <input id="{{choice + question.question}}" type="radio" [checked]="choice===question.answer" [disabled]="graded" name="{{question.question}}">
     <label for="{{choice + question.question}}">{{choice}}</label>
-    <i class="fa fa-check pull-right green-check" *ngIf="grading && choice.toLowerCase()===question.correct"></i>
-    <i class="fa fa-times pull-right red-cross" *ngIf="grading && choice===selected && choice.toLowerCase()!==question.correct"></i>
+    <i class="fa fa-check pull-right green-check" *ngIf="isAttempt && choice===question.correct"></i>
+    <i class="fa fa-times pull-right red-cross" *ngIf="isAttempt && choice===question.answer && question.answer!==question.correct"></i>
   </li>
 </ul>
 <br/>
-<h6>Your answer: {{selected}}</h6>
-<button class="btn btn-success" (click)="grade()">Grade</button>

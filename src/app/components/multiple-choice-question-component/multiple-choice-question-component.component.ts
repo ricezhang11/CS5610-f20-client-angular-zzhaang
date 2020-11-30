@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 @Component({
@@ -9,31 +9,34 @@ import {CommonModule} from '@angular/common';
 export class MultipleChoiceQuestionComponent implements OnInit {
 
   @Input()
-  question = {_id: '', title: '', question: '', correct: '', type: '', quizId: '', choices: []};
-  selected = '';
-  grading = false;
-  grade = () => {
-    this.grading = true;
+  question = {_id: '', title: '', question: '', correct: '', type: '', choices: [], answer: ''};
+  @Input()
+  answer = '';
+  @Input()
+  isAttempt = undefined;
+  @Input()
+  graded = false;
+  @Output()
+  answerChange = new EventEmitter<string>();
+  submitAnswer = (choice: string) => {
+    this.answer = choice;
+    this.answerChange.emit(this.answer);
   }
+
+  checkFormat = (choice: string) => {
+    if (this.isAttempt && choice === this.question.correct) {
+      return 'list-group-item background-green';
+    } else if (this.isAttempt && choice === this.question.answer && this.question.answer !== this.question.correct) {
+      return 'list-group-item background-red';
+    } else {
+      return 'list-group-item';
+    }
+  }
+
+
   constructor() { }
   ngOnInit(): void {
   }
-  checkAnswer = (choice: string) => {
-    if (this.grading){
-      if (this.selected === choice && this.selected === this.question.correct || choice === this.question.correct) {
-        return 'list-group-item background-green';
-      } else if (this.selected !== choice) {
-      return 'list-group-item';
-    } else {
-      return 'list-group-item background-red';
-    }}
-   else {
-     if (this.selected === choice){
-       return 'list-group-item background-green';
-     } else {
-       return 'list-group-item';
-     }
-    }
-  }
+
 
 }
