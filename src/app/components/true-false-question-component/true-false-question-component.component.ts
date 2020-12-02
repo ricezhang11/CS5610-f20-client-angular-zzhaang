@@ -14,7 +14,7 @@ export class TrueFalseQuestionComponent implements OnInit {
   @Input()
   answer = '';
   @Input()
-  isAttempt = undefined;
+  isAttempt = false;
   @Input()
   graded = false;
   @Output()

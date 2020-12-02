@@ -11,8 +11,8 @@ export class QuizzesComponent implements OnInit {
   constructor(private service: QuizzesServiceClient,
               private route: ActivatedRoute) { }
   courseId = '';
-  quizzes = [];
-  attempts = [];
+  quizzes: any[] = [];
+  attempts: any[] = [];
 
 
   ngOnInit(): void {

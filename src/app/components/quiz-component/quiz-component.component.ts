@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./quiz-component.component.css']
 })
 export class QuizComponent implements OnInit {
-  questions = [];
+  questions: any[] = [];
   quizId = '';
   courseId = '';
   graded = false;

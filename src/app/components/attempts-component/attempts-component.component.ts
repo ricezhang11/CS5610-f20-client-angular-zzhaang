@@ -12,7 +12,7 @@ export class AttemptsComponent implements OnInit {
   constructor(private service: AttemptServiceClient,
               private route: ActivatedRoute
   ) { }
-  attempt = {};
+  attempt = {_id: '', quiz: {}, answers: [], score: 0};
   attemptId = '';
   ngOnInit(): void {
     this.route.params.subscribe(params => {
